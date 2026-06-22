@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -67,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangocrud.wsgi.application'
+WSGI_APPLICATION = 'djangocrud.wsgi.app'
 
 
 # Database
@@ -116,5 +117,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE= 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_URL = '/signin/' #se añade para redireccionar al login a usuarios q traten de acceder a partes de la pagina q requieran una cuenta
