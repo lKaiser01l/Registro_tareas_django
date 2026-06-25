@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,9 @@ SECRET_KEY = 'django-insecure-9u5r&q$3erihk#rmc_8bfmasikzy3yssa2lue)p28s@l7&l=0r
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    ".vercel.app"
+    ".vercel.app",
+    "localhost",
+    "127.0.0.1",
 ]
 
 
@@ -77,11 +80,16 @@ WSGI_APPLICATION = 'djangocrud.wsgi.app'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse('postgresql://neondb_owner:npg_TKbM9iWXylc0@ep-rapid-bread-athp94oc-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require')
 }
+""" 'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bd_tasks',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5433',
+    } """
 
 
 # Password validation
